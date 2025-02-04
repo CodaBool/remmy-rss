@@ -16,6 +16,7 @@
 - [Deno Docker](https://github.com/denoland/deno_docker)
 - [Deno HTTP](https://docs.deno.com/runtime/fundamentals/http_server)
 - [SQLite](https://github.com/denodrivers/sqlite3/blob/main/doc.md)
+- [tailwind](https://nerdcave.com/tailwind-cheat-sheet)
 
 # TODO:
 - see about dropping /public

@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="range"] {
+    overflow: hidden;
+    width: 80px;
+    -webkit-appearance: none;
+    border-radius: 1em;
+    background-color: rgba(69, 39, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: #ffe2bd;
+    margin-top: -1px;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: ew-resize;
+    background: #ff9100;
+    box-shadow: -80px 0 0 80px #ffc273;
+  }
+}
+/** FF*/
+input[type="range"]::-moz-range-progress {
+  background-color: #ffc273;
+}
+input[type="range"]::-moz-range-track {
+  background-color: "red";
+}
+/* IE*/
+input[type="range"]::-ms-fill-lower {
+  background-color: #43e5f7;
+}
+input[type="range"]::-ms-fill-upper {
+  background-color: #9a905d;
+}

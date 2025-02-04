@@ -14,27 +14,35 @@ db.exec(`
 Deno.serve(async req => {
   const { method, headers, url } = req
   const { pathname } = new URL(url)
-  let head, res = "not found"
+  let res = "not found"
+  const head = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS, DELETE, PUT",
+    "Access-Control-Allow-Credentials": "true",
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  }
 
   try {
     console.log("method", method, "pathname", pathname)
     if (method === "GET" && pathname === "/vite.svg") {
       const file = await Deno.readFile("./public/vite.svg")
       res = new TextDecoder().decode(file)
-      head = { "Content-Type": "image/svg+xml" }
+      head["Content-Type"] = "image/svg+xml"
     } else if (method === "GET" && pathname === "/") {
       const file = await Deno.readFile("./dist/index.html")
       res = new TextDecoder().decode(file)
-      head = { "Content-Type": "text/html" }
+      head["Content-Type"] = "text/html"
     } else if (method === "GET" && pathname === "/feeds") {
       res = JSON.stringify(db.prepare("SELECT id, url, created_at FROM feeds").all())
-      head = { "Content-Type": "application/json" }
+      head["Content-Type"] = "application/json"
     } else if (method === "POST" && pathname === "/feed") {
       const data = await req.formData()
       const feed = data.get("url")
       if (!feed) throw "URL is required"
       console.log("adding URL", feed)
-      res = db.exec("INSERT INTO feeds(url) VALUES(?)", feed)
+      db.exec("INSERT INTO feeds(url) VALUES(?)", feed)
+      res = JSON.stringify(db.prepare("SELECT id, url, created_at FROM feeds").all())
     } else {
       throw "404"
     }
