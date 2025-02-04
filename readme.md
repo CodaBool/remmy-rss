@@ -1,5 +1,16 @@
-# 🚧 This area is under construction 👷
-> this will be an expanded version of [reddit-top-rss](https://github.com/johnwarne/reddit-top-rss) which will support lemmy
+
+# Reddit + Lemmy = Remmy
+> This will be an expanded version of [reddit-top-rss](https://github.com/johnwarne/reddit-top-rss) with added Lemmy support
+
+### What does it do?
+- Allows only the top percentage of posts to be shown in an RSS feed
+
+### What it doesn't do
+- **not** an RSS reader, this will only curate Reddit/Lemmy content into a consumable RSS feed
+
+# 🚧 This is under construction 👷
+> [!WARNING]
+> dev notes below. Hardhats required beyond this point!
 
 # Links
 - [Deno Docker](https://github.com/denoland/deno_docker)
